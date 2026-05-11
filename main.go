@@ -63,6 +63,7 @@ func readConfig(config *Config) bool{
 
 	err = yaml.Unmarshal(data, &config)
 	if err != nil {
+		log.Println("Error parsing config.yaml:", err)
 		return false
 	}
 	return true
