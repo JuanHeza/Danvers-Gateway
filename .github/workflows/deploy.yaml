@@ -19,7 +19,10 @@ jobs:
 
       - name: Build and replace binary
         run: |
-          go build -o /usr/local/bin/gateway ./cmd/gateway
+          go build -o DanversGateway .
+          sudo mkdir /opt/danvers-gateway
+          sudo mv DanversGateway /opt/danvers-gateway/
+          sudo chmod +x /opt/danvers-gateway/DanversGateway
           sudo systemctl stop gateway.service
           sudo systemctl start gateway.service
           sudo systemctl status gateway.service --no-pager

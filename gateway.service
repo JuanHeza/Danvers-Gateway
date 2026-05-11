@@ -5,8 +5,8 @@ After=network.target
 [Service]
 Type=simple
 User=danvers
-WorkingDirectory=/opt/danvers
-ExecStart=/opt/danvers/danvers-gateway
+WorkingDirectory=/home/juanheza/Documents/Danvers-Gateway
+ExecStart=/opt/danvers-gateway/DanversGateway
 Restart=always
 RestartSec=5
 
