@@ -24,7 +24,7 @@ jobs:
           sudo chown -R svc_devdog:svc_devdog /home/svc_devdog/Danvers-Gateway
           sudo su - svc_devdog 
           cd /home/svc_devdog/Danvers-Gateway
-          go build -o DanversGateway . -buildvcs=false
+          go build -o DanversGateway .
       - name: Install
         run: |
           if systemctl list-units --type=service --all | grep -q "gateway.service"; then
