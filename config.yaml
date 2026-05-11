@@ -5,6 +5,6 @@ apps:
     path: "/my-app"
     target: "http://localhost:8080"
 
-port: "8080"
+port: "8081"
 version: "1.0.0"
 date: "09/05/2026"

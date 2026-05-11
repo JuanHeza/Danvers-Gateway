@@ -36,3 +36,9 @@ jobs:
           sudo systemctl enable gateway.service
           sudo systemctl start gateway.service
           sudo systemctl status gateway.service
+      - name: Show logs if build fails
+        if: failure()
+        run: |
+          echo "Build failed"
+          ls -la
+          sudo journalctl -u gateway.service -n 10
