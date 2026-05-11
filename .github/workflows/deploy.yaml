@@ -17,7 +17,7 @@ jobs:
         with:
           go-version: '1.22'
 
-      - name: Build and replace binary
+      - name: Build
         run: |
           sudo mkdir -p /home/svc_devdog/Danvers-Gateway
           sudo cp -r . /home/svc_devdog/Danvers-Gateway
@@ -25,6 +25,8 @@ jobs:
           sudo su - svc_devdog 
           cd /home/svc_devdog/Danvers-Gateway
           go build -o DanversGateway .
+      - name: Install
+        run: |
           if systemctl list-units --type=service --all | grep -q "gateway.service"; then
             sudo systemctl stop gateway.service
           fi
