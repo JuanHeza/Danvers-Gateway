@@ -19,15 +19,16 @@ jobs:
 
       - name: Build and replace binary
         run: |
+          sudo mkdir -p /home/svc_devdog/Danvers-Gateway
+          sudo cp -r . /home/svc_devdog/Danvers-Gateway
+          sudo chown -R svc_devdog:svc_devdog /home/svc_devdog/Danvers-Gateway
+          sudo su - svc_devdog 
+          cd /home/svc_devdog/Danvers-Gateway
           go build -o DanversGateway .
           if systemctl list-units --type=service --all | grep -q "gateway.service"; then
             sudo systemctl stop gateway.service
           fi
           sudo cp gateway.service /etc/systemd/system/
-          sudo chown -R svc_devdog:svc_devdog /opt/danvers-gateway
-          sudo mkdir -p /home/svc_devdog/Danvers-Gateway
-          sudo cp -r . /home/svc_devdog/Danvers-Gateway
-          sudo chown -R svc_devdog:svc_devdog /home/svc_devdog/Danvers-Gateway
           sudo systemctl daemon-reload
           sudo systemctl enable gateway.service
           sudo systemctl start gateway.service
