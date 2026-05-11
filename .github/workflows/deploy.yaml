@@ -26,5 +26,8 @@ jobs:
           if systemctl list-units --type=service --all | grep -q "gateway.service"; then
             sudo systemctl stop gateway.service
           fi
+          cp gateway.service /etc/systemd/system/
+          sudo systemctl daemon-reload
+          sudo systemctl enable gateway.service
           sudo systemctl start gateway.service
-          sudo systemctl status gateway.service --no-pager
+          sudo systemctl status gateway.service
