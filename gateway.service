@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=svc_devdog
 WorkingDirectory=/home/svc_devdog/Danvers-Gateway
-ExecStart=/home/svc_devdog/Danvers-Gateway
+ExecStart=/home/svc_devdog/Danvers-Gateway/DanversGateway
 Restart=always
 RestartSec=5
 

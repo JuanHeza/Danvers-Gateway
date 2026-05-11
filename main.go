@@ -16,6 +16,7 @@ type Config struct {
 	Apps []App `yaml:"apps"`
 	Version string `yaml:"version"`
 	Date string `yaml:"date"`
+	Port string `yaml:"port"`
 }
 func (c Config) String() string {
 	return fmt.Sprintf(
@@ -83,6 +84,6 @@ func main(){
 		gw.Any(app.Path+"/*proxyPath", proxy(app.Target))
 		log.Println(app.String())
 	}
-	log.Println("Gateway listening at port :80")
-	gw.Run(":80")
+	log.Println("Gateway listening at port :", config.Port)
+	gw.Run(":" + config.Port)
 }
