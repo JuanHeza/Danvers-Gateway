@@ -20,9 +20,11 @@ jobs:
       - name: Build and replace binary
         run: |
           go build -o DanversGateway .
-          sudo mkdir /opt/danvers-gateway
+          sudo mkdir -p /opt/danvers-gateway
           sudo mv DanversGateway /opt/danvers-gateway/
           sudo chmod +x /opt/danvers-gateway/DanversGateway
-          sudo systemctl stop gateway.service
+          if systemctl list-units --type=service --all | grep -q "gateway.service"; then
+            sudo systemctl stop gateway.service
+          fi
           sudo systemctl start gateway.service
           sudo systemctl status gateway.service --no-pager
