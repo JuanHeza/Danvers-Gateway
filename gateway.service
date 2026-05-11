@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-User=danvers
+User=svc_devdog
 WorkingDirectory=/home/juanheza/Documents/Danvers-Gateway
 ExecStart=/opt/danvers-gateway/DanversGateway
 Restart=always

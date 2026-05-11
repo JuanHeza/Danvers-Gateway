@@ -27,6 +27,7 @@ jobs:
             sudo systemctl stop gateway.service
           fi
           sudo cp gateway.service /etc/systemd/system/
+          sudo chown -R svc_devdog:svc_devdog /opt/danvers-gateway
           sudo systemctl daemon-reload
           sudo systemctl enable gateway.service
           sudo systemctl start gateway.service
