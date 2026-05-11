@@ -54,6 +54,8 @@ func proxy(target string) gin.HandlerFunc {
 }
 
 func readConfig(config *Config) bool{
+	cwd, _ := os.Getwd()
+    log.Println("Buscando config.yaml en:", cwd)
 	data, err := os.ReadFile("config.yaml")
 	if err != nil {
 		return false
