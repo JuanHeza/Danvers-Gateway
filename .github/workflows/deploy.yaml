@@ -22,9 +22,8 @@ jobs:
           sudo mkdir -p /home/svc_devdog/Danvers-Gateway
           sudo cp -r . /home/svc_devdog/Danvers-Gateway
           sudo chown -R svc_devdog:svc_devdog /home/svc_devdog/Danvers-Gateway
-          sudo su - svc_devdog 
           cd /home/svc_devdog/Danvers-Gateway
-          go build -o DanversGateway .
+          go build  -buildvcs=false -o DanversGateway .
       - name: Install
         run: |
           if systemctl list-units --type=service --all | grep -q "gateway.service"; then
