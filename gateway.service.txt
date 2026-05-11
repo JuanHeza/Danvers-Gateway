@@ -1,0 +1,14 @@
+[Unit]
+Description=Danvers Gateway
+After=network.target
+
+[Service]
+Type=simple
+User=danvers
+WorkingDirectory=/opt/danvers
+ExecStart=/opt/danvers/danvers-gateway
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
